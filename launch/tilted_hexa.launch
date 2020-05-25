@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+	<node pkg="tilted_hexa" type="tilted_control" name="tilted_control" output="screen">
+
+		<param name="pose_topic_name" value="/hexa_tilt/local_pose" />
+		<param name="vel_topic_name" value="/hexa_tilt/local_vel" />
+		<param name="motor_topic_name" value="/hexa_tilt/cmd/motor_vel" />
+		<param name="des_pose_topic_name" value = "/trajectory/pose" />
+		<param name="des_vel_topic_name" value = "/trajectory/vel" />
+		<param name="des_acc_topic_name" value = "/trajectory/acc" />
+
+		<param name="Kpp" value="50.0" />
+		<param name="Kdp" value="75.0" />
+		<param name="Kip" value="30.0" />
+		<param name="Kpp_z" value="20.0" />
+		<param name="Kdp_z" value="40.0" />
+		<param name="Kip_z" value="10.0" />
+
+		<param name="Kpr" value="50.0" />
+		<param name="Kdr" value="75.0" />
+		<param name="Kir" value="25.0" />
+		<param name="Kpr_z" value="50.0" />
+		<param name="Kdr_z" value="75.0" />
+		<param name="Kir_z" value="25.0" />
+
+		<param name="alpha" value="0.33" />
+		<param name="Km" value="5.12915e-07" /> <!-- 5.12915e-07 -->
+		<param name="Kf" value="8.54858e-06" />
+		<param name="L_arm" value="0.21" />
+		<param name="Z_arm" value="0.08" />
+		<param name="Mass" value="1.5" />
+		<param name="IBxx" value="0.0291" />
+		<param name="IByy" value="0.0291" />
+		<param name="IBzz" value="0.0552" />
+		<param name="rate" value="250" />
+		<param name="gravity" value="-9.81" />
+
+		<param name="tilt_motor_0_topic_name" value="/tilt/tilt_rotor_0_joint_controller/command" />
+		<param name="tilt_motor_1_topic_name" value="/tilt/tilt_rotor_1_joint_controller/command" />
+		<param name="tilt_motor_2_topic_name" value="/tilt/tilt_rotor_2_joint_controller/command" />
+		<param name="tilt_motor_3_topic_name" value="/tilt/tilt_rotor_3_joint_controller/command" />
+		<param name="tilt_motor_4_topic_name" value="/tilt/tilt_rotor_4_joint_controller/command" />
+		<param name="tilt_motor_5_topic_name" value="/tilt/tilt_rotor_5_joint_controller/command" />
+		<param name="tilt_motors_topic_name" value="/tilt/joint_states" />
+		
+
+
+	</node>
+
+	<node pkg="tilted_hexa" type="trajectory" name="trajectory" output="screen">
+
+		<param name="pose_topic_name" value = "/trajectory/pose" />
+		<param name="vel_topic_name" value = "/trajectory/vel" />
+		<param name="acc_topic_name" value = "/trajectory/acc" />
+		<param name="trajectory_rate" value = "250" />
+		<param name="V_max" value = "0.5" />
+		<param name="A_max" value = "0.25" />
+		<param name="J_max" value = "0.125" />
+		<param name="x" value = "0.0" />
+		<param name="y" value = "0.0" />
+		<param name="z" value = "-0.288" />
+		<param name="roll" value = "0.0" />
+		<param name="pitch" value = "0.0" />
+		<param name="yaw" value = "0.0" />
+
+	</node>
+
+
+</launch>
